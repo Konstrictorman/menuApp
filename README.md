@@ -68,6 +68,8 @@ Item successfully added
 ![image](https://github.com/Konstrictorman/menuApp/assets/5210457/01e0875a-b91a-4a1d-acb8-08de15a6feb0)
 
 
+## Part 2 - AWS serverless application model
+
 
 
 
