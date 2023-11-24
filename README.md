@@ -68,10 +68,47 @@ Item successfully added
 ![image](https://github.com/Konstrictorman/menuApp/assets/5210457/01e0875a-b91a-4a1d-acb8-08de15a6feb0)
 
 
+
 ## Part 2 - AWS serverless application model
 
+### Requirements
+
+- The application must allow users to register (create an account).
+- The application must allow users to authenticate using a password.
+- The application must use Cognito to manage user accounts.
+- The application must grant integrity and authorization.
+- The application implements a minimal facebook-like social network. Every connected user can post messages and every user will see the posted messages. Last posted message is shown on top.
+- The application must show how many users are currently connected.
+- The application must updated the post feed and the number of connected users in Real-time.
+- Access to WS must be secure.
+ -Implement the simplest minimal application possible.
+
+### Components
+
+- First step should be implementing Lambda functions for user registration (account creation), authentication, posting and retrieve messages.
+- Let's use DyanmoDB as the application datasource.
+- Create a Cognito User Pool to manage user accounts, enabling username and password sign-up
+- Expose API REST via AP Gateway
+
+### Design
+
+  ![image](https://github.com/Konstrictorman/menuApp/assets/5210457/b16431d3-a6ce-484c-a449-09e679e250ae)
+
+### How authentication works
+
+1. A client first log in via Cognito
+2. After successful login, Cognito returns an id_token to the client;
+3. The client sends a request to the API Gateway with the received id_token;
+4. The API Gateway verifies in Cognito whether the id_token is valid;
+5. Cognito will return to API Gateway a success response when the id_token is valid;
+6. The API Gateway sends the request to the lambda function;
+7. The lambda function executes and sends its response to the API Gateway;
+8. The API Gateway sends the response to the client.
 
 
+## References
 
-
+- https://auth0.com/blog/manage-a-collection-of-secure-api-endpoints-with-postman/?_gl=1*1dihgfj*_gcl_au*OTY2NzIzNzczLjE2OTk3MTM1NDA.*_ga*MTUwMzMzODgxNi4xNjk5NzEzNTQw*_ga_QKMSDV5369*MTcwMDc1MTU5OS4yNS4xLjE3MDA3NTM2NzcuMzIuMC4w#Authorization-in-Postman
+- https://auth0.com/docs/secure/tokens/access-tokens/get-management-api-access-tokens-for-testing
+- https://medium.com/aws-lambda-serverless-developer-guide-with-hands/secure-microservices-with-api-gateway-using-amazon-cognito-user-pools-28ac32afeee2
 
